@@ -10,6 +10,9 @@ import datetime
 import os.path
 
 DEF_MESSAGE = "Committed $$"
+TAIL_MESSAGE = "(original SW: MIT, author: Leonard Richardson)"
+AUTHOR = "Henrique Moreira <h@serrasqueiro.com>"
+
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S" + "."
 
 def main():
@@ -71,6 +74,16 @@ def dump_finally(out, infos, opts):
     """ Finally, the output of git commands! """
     base = opts["msg"]
     commits, dates = infos
+    # Basic commonalities
+    t_msg = TAIL_MESSAGE.replace('"', "'")
+    if t_msg:
+        t_msg = f' -m "{t_msg}"'
+    s_author = AUTHOR.replace('"', "'")
+    if s_author:
+        s_author = f' --author "{s_author}"'
+    else:
+        s_author = ""
+    # Cycle...
     for idx, commit in enumerate(commits, 1):
         dirs = commit[0]
         rest = commit[1:]
@@ -102,7 +115,7 @@ def dump_finally(out, infos, opts):
             p_msg = f' -m "{msg}"'
         else:
             p_msg = ""
-        s_msg = f'git commit --date="{mdate}"{p_msg}{s_rest}\n'
+        s_msg = f'git commit --date="{mdate}"{p_msg}{s_rest}{t_msg}{s_author}\n'
         out.write(s_msg)
     return True
 
