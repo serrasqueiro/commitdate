@@ -11,7 +11,8 @@ import os.path
 
 DEF_MESSAGE = "Committed $$"
 TAIL_MESSAGE = "(original SW: MIT, author: Leonard Richardson)"
-AUTHOR = "Henrique Moreira <h@serrasqueiro.com>"
+AUTHOR = ""	# enter here your name, plus <email@valid-domain>
+#AUTHOR = "Henrique Moreira <h@serrasqueiro.com>"
 
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S" + "."
 
