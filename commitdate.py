@@ -93,7 +93,7 @@ def dump_finally(out, infos, opts):
             if s_rest:
                 s_rest += ", "
             else:
-                s_rest += "- " if len(rest) > 1 else ""
+                s_rest += "- " if msg else ""
             s_rest += name
         if s_rest:
             s_rest = s_rest.replace('"', "")
