@@ -99,7 +99,7 @@ def dump_finally(out, infos, opts):
             s_rest = s_rest.replace('"', "")
             s_rest = f' -m "{s_rest}"'
         if msg:
-            p_msg = f'-m "{msg}"'
+            p_msg = f' -m "{msg}"'
         else:
             p_msg = ""
         s_msg = f'git commit --date="{mdate}"{p_msg}{s_rest}\n'
